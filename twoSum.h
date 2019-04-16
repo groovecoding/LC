@@ -22,3 +22,26 @@ std::vector<int> twoSum(std::vector<int>& nums, int target)
 
 
 
+std::vector<int> twoSum_TwoPointer(std::vector<int>& nums, int target)
+{
+	// write your code here
+	//use two pointer
+	std::vector<int> res;
+	int left = 0;
+	int right = nums.size() - 1;
+	while (left <= right)
+	{
+		if (nums[left] + nums[right] > target && left <= right)
+			right--;
+		if (nums[left] + nums[right] < target && left <= right)
+			left++;
+		if (nums[left] + nums[right] == target)
+		{
+			res.push_back(left + 1);
+			res.push_back(right + 1);
+			return res;
+		}
+		//这里只有一个答案，所以找到就可以return
+
+	}
+}
